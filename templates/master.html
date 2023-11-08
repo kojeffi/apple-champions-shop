@@ -182,7 +182,7 @@
     </div>
 </div>
 
-<nav class="navbar navbar-expand-lg text-uppercase bg-dark text-white fs-6 py-3 px-0 px-md-3 border-bottom align-items-center">
+<nav class="navbar navbar-expand-lg text-uppercase  fs-6 py-3 px-0 px-md-3 border-bottom align-items-center">
     <div class="container-fluid">
         <div class="row justify-content-between align-items-center w-100 py-2">
             <div class="col-auto">
@@ -236,22 +236,18 @@
                             </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="dropdownBlog" data-bs-toggle="dropdown"
-                                   aria-haspopup="true" aria-expanded="false">Blog</a>
+                                   aria-haspopup="true" aria-expanded="false">Products</a>
                                 <ul class="dropdown-menu list-unstyled" aria-labelledby="dropdownBlog">
                                     <li>
-                                        <a href="blog-classic.html" class="dropdown-item item-anchor">Blog <span
+                                        <a href="blog-classic.html" class="dropdown-item item-anchor">Add products <span
                                                 class="badge bg-secondary">pro</span></a>
                                     </li>
                                     <li>
-                                        <a href="blog-grid-with-sidebar.html" class="dropdown-item item-anchor">Blog with Sidebar <span
+                                        <a href="blog-grid-with-sidebar.html" class="dropdown-item item-anchor">View products <span
                                                 class="badge bg-secondary">pro</span></a>
                                     </li>
                                     <li>
-                                        <a href="single-post-no-sidebar.html" class="dropdown-item item-anchor">Single Post <span
-                                                class="badge bg-secondary">pro</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="single-post.html" class="dropdown-item item-anchor">Single post with Sidebar <span
+                                        <a href="single-post-no-sidebar.html" class="dropdown-item item-anchor">Shop <span
                                                 class="badge bg-secondary">pro</span></a>
                                     </li>
                                 </ul>
@@ -309,6 +305,15 @@
                                 <a class="nav-link" href="#">Contact</a>
                             </li>
                             <li class="nav-item">
+                                <a class="nav-link" href="{% url 'registration-url' %}">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'login-url' %}">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{% url 'logout-url' %}">Logout</a>
+                            </li>
+                            <li class="nav-item">
                                 <a href="https://templatesjungle.gumroad.com/l/care-beauty-ecommerce-website-template" class="nav-link border px-3">get pro</a>
                             </li>
                         </ul>
@@ -323,7 +328,8 @@
                             <svg width="24" height="24" viewBox="0 0 24 24">
                                 <use xlink:href="#heart"></use>
                             </svg>
-                            <span class="wishlist-count">(0)</span>
+                           {{ user.email }}
+                            {{ user.password1 }}
                         </a>
                     </li>
                     <li>
@@ -356,17 +362,23 @@
     </div>
 </nav>
 
+<p class="text-center">
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+</p>
+
 {% block content %}
 
 {% endblock %}
-<footer id="footer" class="mt-5 bg-dark text-white">
+<footer id="footer" class="mt-5">
     <div class="container">
         <div class="row d-flex flex-wrap justify-content-between py-5">
             <div class="col-md-4 col-sm-6">
                 <div class="footer-menu footer-menu-001">
                     <div class="footer-intro mb-4">
                         <a href="index.html">
-                            <img src="../static/images/main-logo.png" alt="logo">
+                            <img src="{% static 'images/main-logo.png' %}" alt="logo">
                         </a>
                     </div>
                     <p>Gravida massa volutpat aenean odio. Amet, turpis erat nullam fringilla elementum diam in. Nisi, purus
@@ -477,14 +489,14 @@
                 <div class="col-md-6 d-flex flex-wrap">
                     <div class="shipping">
                         <span>We ship with:</span>
-                        <img src="../static/images/arct-icon.png" alt="icon">
-                        <img src="../static/images/dhl-logo.png" alt="icon">
+                        <img src="{% static 'images/arct-icon.png' %}" alt="icon">
+                        <img src="{% static 'images/dhl-logo.png' %}" alt="icon">
                     </div>
                     <div class="payment-option">
                         <span>Payment Option:</span>
-                        <img src="../static/images/visa-card.png" alt="card">
-                        <img src="../static/images/paypal-card.png" alt="card">
-                        <img src="../static/images/master-card.png" alt="card">
+                        <img src="{% static 'images/visa-card.png' %}" alt="card">
+                        <img src="{% static 'images/paypal-card.png' %}" alt="card">
+                        <img src="{% static 'images/master-card.png' %}" alt="card">
                     </div>
                 </div>
                 <div class="col-md-6 text-md-end mt-3 mt-md-0">
